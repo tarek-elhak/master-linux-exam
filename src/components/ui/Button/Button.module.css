@@ -1,0 +1,24 @@
+.Button {
+  display: block;
+  margin-inline: auto;
+  cursor: pointer;
+}
+
+.Button:disabled {
+  cursor: not-allowed;
+  background-color: #ddd;
+}
+
+.Primary {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border: 1px solid #800000;
+  background-color: #fff;
+}
+
+.Primary:hover:enabled {
+  border: 1px solid transparent;
+  background-color: #800000;
+  color: #fff;
+}
