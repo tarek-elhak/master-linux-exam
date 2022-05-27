@@ -1,8 +1,11 @@
+import { Routes, Route } from "react-router-dom";
 import Auth from "./containers/Auth";
 function App() {
   return (
     <div className="App">
-      <Auth />
+      <Routes>
+        <Route path="/login" element={<Auth />} />
+      </Routes>
     </div>
   );
 }
