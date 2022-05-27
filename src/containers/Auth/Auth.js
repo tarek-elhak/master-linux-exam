@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import Button from "../components/ui/Button/Button";
+import { connect } from "react-redux";
+import * as actionCreators from "../../store/actions/index";
+import Button from "../../components/ui/Button/Button";
+import Spinner from "../../components/ui/Spinner/Spinner";
 import classes from "./Auth.module.css";
 
 const Auth = (props) => {
@@ -37,7 +40,6 @@ const Auth = (props) => {
       password.touched &&
       !password.error
     ) {
-      console.log("test");
       setHasError(false);
     }
   }, [
@@ -178,8 +180,7 @@ const Auth = (props) => {
 
   const authSubmitHandler = (event) => {
     event.preventDefault();
-
-    console.log(name, email, password);
+    props.loginUser();
   };
 
   return (
@@ -226,8 +227,21 @@ const Auth = (props) => {
       <Button primary disabled={hasError}>
         login
       </Button>
+      {props.isLoading && <Spinner />}
     </form>
   );
 };
 
-export default Auth;
+const mapStateToProps = (state) => {
+  return {
+    isLoading: state.auth.loading,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loginUser: () => dispatch(actionCreators.sendLoginRequest()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);

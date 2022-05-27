@@ -1,1 +1,1 @@
-export { loginUsers } from "./auth";
+export { sendLoginRequest } from "./auth";

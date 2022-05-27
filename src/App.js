@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import Auth from "./containers/Auth";
+import Auth from "./containers/Auth/Auth";
 function App() {
   return (
     <div className="App">

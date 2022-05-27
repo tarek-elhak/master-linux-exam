@@ -1,7 +1,22 @@
 import * as actionTypes from "./actionTypes";
 
-const loginUser = () => {
+const loginSuccessfully = () => {
   return {
-    type: actionTypes.LOGIN_USER,
+    type: actionTypes.SUCCESSFULL_LOGIN,
+  };
+};
+
+const startLoading = () => {
+  return {
+    type: actionTypes.START_LOADING,
+  };
+};
+
+export const sendLoginRequest = () => {
+  return (dispatch) => {
+    dispatch(startLoading());
+    setTimeout(() => {
+      dispatch(loginSuccessfully());
+    }, 500);
   };
 };
