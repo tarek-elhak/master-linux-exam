@@ -1,6 +1,6 @@
 import * as actionTypes from "./actionTypes";
 
-const loginSuccessfully = () => {
+export const loginSuccessfully = () => {
   return {
     type: actionTypes.SUCCESSFULL_LOGIN,
   };
@@ -16,6 +16,7 @@ export const sendLoginRequest = () => {
   return (dispatch) => {
     dispatch(startLoading());
     setTimeout(() => {
+      localStorage.setItem("isAuthenticated", "yes");
       dispatch(loginSuccessfully());
     }, 500);
   };

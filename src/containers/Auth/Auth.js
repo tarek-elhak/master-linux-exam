@@ -30,7 +30,6 @@ const Auth = (props) => {
   });
 
   const [hasError, setHasError] = useState(true);
-
   useEffect(() => {
     if (
       name.touched &&
@@ -235,6 +234,7 @@ const Auth = (props) => {
 const mapStateToProps = (state) => {
   return {
     isLoading: state.auth.loading,
+    isAuthenticated: state.auth.authenticated,
   };
 };
 
