@@ -223,7 +223,7 @@ const Auth = (props) => {
         ) : null}
       </div>
 
-      <Button primary disabled={hasError}>
+      <Button primary login disabled={hasError}>
         login
       </Button>
       {props.isLoading && <Spinner />}

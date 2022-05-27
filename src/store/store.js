@@ -5,10 +5,12 @@ import {
   combineReducers,
 } from "redux";
 import { authReducer } from "./reducers/auth";
+import { questionsReducer } from "./reducers/questions";
 import thunk from "redux-thunk";
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  questions: questionsReducer,
 });
 
 export const configureStore = () => {
