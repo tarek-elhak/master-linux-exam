@@ -9,9 +9,18 @@
   transform: translateX(-50%);
 }
 
+.Button.Next,
+.Button.Result {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
 .Button:disabled {
   cursor: not-allowed;
   background-color: #ddd;
+  color: #999;
+  border: none;
 }
 
 .Primary {
@@ -23,8 +32,24 @@
   background-color: #fff;
 }
 
+.Secondary {
+  font-size: 1rem;
+  padding: 5px 10px;
+  border: 1px solid #8be133;
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+.Secondary:hover:enabled,
 .Primary:hover:enabled {
   border: 1px solid transparent;
+  font-weight: bold;
+}
+.Primary:hover:enabled {
   background-color: #800000;
+  color: #fff;
+}
+.Secondary:hover:enabled {
+  background-color: #8be133;
   color: #fff;
 }

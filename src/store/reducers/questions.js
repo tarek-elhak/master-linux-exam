@@ -5,7 +5,7 @@ import { getRandomItem } from "../../utils/random";
 const initialState = {
   questions,
   prevQuestions: [],
-  currentQuestion: {},
+  currentQuestion: { id: null, question: "", answers: [], correct_answer: "" },
 };
 
 export const questionsReducer = (state = initialState, action) => {
@@ -18,7 +18,20 @@ export const questionsReducer = (state = initialState, action) => {
       return {
         ...state,
         prevQuestions: [...state.prevQuestions, question.id],
-        currentQuestion: { question },
+        currentQuestion: { ...question },
+      };
+
+    case actionTypes.SAVE_STUDENT_ANSWER:
+      const updatedQuestions = state.questions.map((question) => {
+        if (question.id === action.questionId) {
+          return { ...question, student_answer: action.studentAnswer };
+        }
+        return question;
+      });
+
+      return {
+        ...state,
+        questions: updatedQuestions,
       };
 
     default: {

@@ -1,0 +1,28 @@
+.QuestionText {
+  padding: 10px;
+}
+.Answers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.AnswerInput {
+  display: none;
+}
+.Answers {
+  padding: 10px;
+}
+.Answer {
+  display: block;
+  padding: 8px;
+  margin-bottom: 10px;
+  background-color: #c8c3c2;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+input[type="radio"]:checked + label {
+  background-color: #e78c27;
+  color: #fff;
+  font-weight: bold;
+}

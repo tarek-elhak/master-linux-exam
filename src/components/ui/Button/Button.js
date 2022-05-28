@@ -5,6 +5,8 @@ const Button = (props) => {
     classes.Button,
     props.primary ? classes.Primary : classes.Secondary,
     props.login && classes.Login,
+    props.next && classes.Next,
+    props.result && classes.Result,
   ];
   return (
     <button

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import Button from "../../components/ui/Button/Button";
 import Question from "../Exam/Question/Question";
@@ -6,30 +6,44 @@ import * as actionCreators from "../../store/actions/index";
 import classes from "./Exam.module.css";
 
 const Exam = (props) => {
-  // const { getQuestion } = props;
+  const [studentAnswer, setStudentAnswer] = useState("");
 
-  useEffect(
-    () => {
-      props.getQuestion();
-    },
-    [
-      /*getQuestion*/
-    ]
-  );
+  const answerChangedHandler = (event) => {
+    setStudentAnswer(event.target.value);
+  };
+
+  useEffect(() => {
+    props.getQuestion();
+  }, []);
 
   const nextQuestionHandler = (event) => {
-    console.log("getting the next question !");
+    props.saveAnswer(props.question.id, studentAnswer);
+    props.getQuestion();
   };
 
   const showScoreHandler = (event) => {
     console.log("showing the score !");
   };
 
-  let button = <Button clicked={nextQuestionHandler}>next one</Button>;
+  let button = (
+    <Button
+      secondary
+      next
+      clicked={nextQuestionHandler}
+      disabled={!props.question.answers.includes(studentAnswer)}
+    >
+      next one
+    </Button>
+  );
 
   if (props.prevQuestions.length === props.allQuestions.length) {
     button = (
-      <Button secondary clicked={showScoreHandler}>
+      <Button
+        secondary
+        result
+        clicked={showScoreHandler}
+        disabled={!props.question.answers.includes(studentAnswer)}
+      >
         show result
       </Button>
     );
@@ -37,7 +51,11 @@ const Exam = (props) => {
 
   return (
     <div className={classes.Exam}>
-      <Question question={props.question} />
+      <Question
+        {...props.question}
+        studentAnswer={studentAnswer}
+        answerChangedHandler={answerChangedHandler}
+      />
       {button}
     </div>
   );
@@ -51,9 +69,11 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (disptach) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    getQuestion: () => disptach(actionCreators.getQuestion()),
+    getQuestion: () => dispatch(actionCreators.getQuestion()),
+    saveAnswer: (id, answer) =>
+      dispatch(actionCreators.saveStudentAnswer(id, answer)),
   };
 };
 
