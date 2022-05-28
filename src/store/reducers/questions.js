@@ -1,6 +1,7 @@
 import * as actionTypes from "../actions/actionTypes";
 import questions from "../../questions";
 import { getRandomItem } from "../../utils/random";
+import { shuffle } from "../../utils/shuffle";
 
 const initialState = {
   questions,
@@ -16,10 +17,16 @@ export const questionsReducer = (state = initialState, action) => {
         (question) => !state.prevQuestions.includes(question.id)
       );
       let question = getRandomItem(remainingQuestions);
+      // shuffle the answers
+      let updatedQuestion = {
+        ...question,
+        answers: shuffle([...question.answers]),
+      };
+
       return {
         ...state,
         prevQuestions: [...state.prevQuestions, question.id],
-        currentQuestion: { ...question },
+        currentQuestion: updatedQuestion,
       };
 
     case actionTypes.SAVE_STUDENT_ANSWER:
