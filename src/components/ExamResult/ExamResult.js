@@ -12,13 +12,22 @@ const ExamResult = (props) => {
       <Button secondary logout clicked={() => props.logout(navigate)}>
         logout
       </Button>
-      <p>your score is: {props.studentScore}</p>
+      {props.prevQuestions.length !== props.allQuestions.length ? (
+        <p>
+          You have to complete all questions in order to show your score, go
+          back !
+        </p>
+      ) : (
+        <p>your score is: {props.studentScore}</p>
+      )}
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
   return {
+    prevQuestions: state.questions.prevQuestions,
+    allQuestions: state.questions.questions,
     studentScore: state.questions.studentScore,
   };
 };
