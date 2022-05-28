@@ -7,6 +7,7 @@ const Button = (props) => {
     props.login && classes.Login,
     props.next && classes.Next,
     props.result && classes.Result,
+    props.logout && classes.Logout,
   ];
   return (
     <button

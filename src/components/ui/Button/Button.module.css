@@ -11,11 +11,15 @@
 
 .Button.Next,
 .Button.Result {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+}
+.Button.Logout {
   position: absolute;
-  bottom: 20px;
+  top: 20px;
   right: 20px;
 }
-
 .Button:disabled {
   cursor: not-allowed;
   background-color: #ddd;

@@ -17,6 +17,10 @@ const Exam = (props) => {
     props.getQuestion();
   }, []);
 
+  const logoutHandler = () => {
+    props.logout();
+  };
+
   const nextQuestionHandler = (event) => {
     props.saveAnswer(props.question.id, studentAnswer);
     props.getQuestion();
@@ -54,6 +58,9 @@ const Exam = (props) => {
 
   return (
     <div className={classes.Exam}>
+      <Button secondary logout clicked={logoutHandler}>
+        logout
+      </Button>
       <Question
         {...props.question}
         studentAnswer={studentAnswer}
@@ -78,6 +85,7 @@ const mapDispatchToProps = (dispatch) => {
     saveAnswer: (id, answer) =>
       dispatch(actionCreators.saveStudentAnswer(id, answer)),
     calcScore: () => dispatch(actionCreators.calculateStudentScore()),
+    logout: () => dispatch(actionCreators.logout()),
   };
 };
 

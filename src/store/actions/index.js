@@ -1,4 +1,4 @@
-export { sendLoginRequest, loginSuccessfully } from "./auth";
+export { sendLoginRequest, loginSuccessfully, logout } from "./auth";
 export {
   getQuestion,
   saveStudentAnswer,

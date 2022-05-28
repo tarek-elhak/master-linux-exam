@@ -21,3 +21,10 @@ export const sendLoginRequest = () => {
     }, 500);
   };
 };
+
+export const logout = () => {
+  localStorage.removeItem("isAuthenticated");
+  return {
+    type: actionTypes.LOGOUT,
+  };
+};
