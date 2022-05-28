@@ -9,14 +9,16 @@ import classes from "./Exam.module.css";
 const Exam = (props) => {
   const [studentAnswer, setStudentAnswer] = useState("");
   const navigate = useNavigate();
+
+  const { resetExam, getQuestion } = props;
   const answerChangedHandler = (event) => {
     setStudentAnswer(event.target.value);
   };
 
   useEffect(() => {
-    props.resetExam();
-    props.getQuestion();
-  }, []);
+    resetExam();
+    getQuestion();
+  }, [resetExam, getQuestion]);
 
   const logoutHandler = () => {
     props.logout(navigate);

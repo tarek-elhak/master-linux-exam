@@ -55,30 +55,22 @@ const Auth = (props) => {
       }
     }
     if (!error && input[type].rules.email) {
-      if (!value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+      if (!value.match(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/)) {
         error = true;
         errorMessage = `You must enter a valid ${type} address`;
       }
     }
-    if (!error && input[type].rules.includes) {
-      {
-        if (input[type].rules.includes.number) {
-          if (!value.match(/\d/)) {
-            error = true;
-            errorMessage = `${type} must contains at least 1 number`;
-          }
-        }
+    if (!error && input[type].rules.includes?.number) {
+      if (!value.match(/\d/)) {
+        error = true;
+        errorMessage = `${type} must contains at least 1 number`;
       }
     }
 
-    if (!error && input[type].rules.includes) {
-      {
-        if (input[type].rules.includes.uppercase) {
-          if (!value.match(/[A-Z]/)) {
-            error = true;
-            errorMessage = `${type} must contains at least 1 uppercase letter`;
-          }
-        }
+    if (!error && input[type].rules.includes?.uppercase) {
+      if (!value.match(/[A-Z]/)) {
+        error = true;
+        errorMessage = `${type} must contains at least 1 uppercase letter`;
       }
     }
 

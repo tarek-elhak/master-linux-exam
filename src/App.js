@@ -9,13 +9,14 @@ import NotFound from "./components/NotFound/NotFound";
 import * as actionCreators from "./store/actions/index";
 
 const App = (props) => {
+  const { loginUser } = props;
   useEffect(() => {
     const authenticated = localStorage.getItem("isAuthenticated");
 
     if (authenticated) {
-      props.loginUser();
+      loginUser();
     }
-  }, []);
+  }, [loginUser]);
 
   return (
     <div className="App">
