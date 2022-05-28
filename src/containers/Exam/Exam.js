@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/ui/Button/Button";
 import Question from "../Exam/Question/Question";
 import * as actionCreators from "../../store/actions/index";
@@ -7,7 +8,7 @@ import classes from "./Exam.module.css";
 
 const Exam = (props) => {
   const [studentAnswer, setStudentAnswer] = useState("");
-
+  const navigate = useNavigate();
   const answerChangedHandler = (event) => {
     setStudentAnswer(event.target.value);
   };
@@ -22,7 +23,9 @@ const Exam = (props) => {
   };
 
   const showScoreHandler = (event) => {
-    console.log("showing the score !");
+    props.saveAnswer(props.question.id, studentAnswer);
+    props.calcScore();
+    navigate("/exam-result", { replace: true });
   };
 
   let button = (
@@ -74,6 +77,7 @@ const mapDispatchToProps = (dispatch) => {
     getQuestion: () => dispatch(actionCreators.getQuestion()),
     saveAnswer: (id, answer) =>
       dispatch(actionCreators.saveStudentAnswer(id, answer)),
+    calcScore: () => dispatch(actionCreators.calculateStudentScore()),
   };
 };
 

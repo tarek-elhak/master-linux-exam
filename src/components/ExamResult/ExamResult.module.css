@@ -1,0 +1,13 @@
+.ExamResult {
+  width: 50%;
+  margin: 100px auto;
+  border-radius: 6px;
+  background-color: #f4c325;
+  padding: 10px;
+  box-shadow: 0 2px 2px #f7dd89;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}

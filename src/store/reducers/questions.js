@@ -6,6 +6,7 @@ const initialState = {
   questions,
   prevQuestions: [],
   currentQuestion: { id: null, question: "", answers: [], correct_answer: "" },
+  studentScore: 0,
 };
 
 export const questionsReducer = (state = initialState, action) => {
@@ -34,6 +35,18 @@ export const questionsReducer = (state = initialState, action) => {
         questions: updatedQuestions,
       };
 
+    case actionTypes.CALCULATE_STUDENT_SCORE:
+      let score = 0;
+      state.questions.forEach(
+        (question) =>
+          question.correct_answer === question.student_answer && score++
+      );
+      const scorePercentage =
+        Math.round((score / state.questions.length) * 100) + "%";
+      return {
+        ...state,
+        studentScore: scorePercentage,
+      };
     default: {
       return state;
     }

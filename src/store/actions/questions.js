@@ -13,3 +13,9 @@ export const saveStudentAnswer = (questionId, studentAnswer) => {
     studentAnswer,
   };
 };
+
+export const calculateStudentScore = () => {
+  return {
+    type: actionTypes.CALCULATE_STUDENT_SCORE,
+  };
+};

@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 import Auth from "./containers/Auth/Auth";
 import Exam from "./containers/Exam/Exam";
+import ExamResult from "./components/ExamResult/ExamResult";
 import { useEffect } from "react";
 import * as actionCreators from "./store/actions/index";
 
@@ -23,7 +24,7 @@ const App = (props) => {
         <Route path="/" element={<Navigate to="/exam" replace />} />
         <Route path="/login" element={<Navigate to="/exam" replace />} />
         <Route path="/exam" element={<Exam />} />
-        <Route path="/exam-result" element={<></>} />
+        <Route path="/exam-result" element={<ExamResult />} />
       </Routes>
     );
   } else {
@@ -32,6 +33,7 @@ const App = (props) => {
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Auth />} />
         <Route path="/exam" element={<Navigate to="/login" replace />} />
+        <Route path="/exam-result" element={<Navigate to="/login" replace />} />
       </Routes>
     );
   }
