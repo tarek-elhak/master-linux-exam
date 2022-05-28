@@ -12,18 +12,20 @@ const startLoading = () => {
   };
 };
 
-export const sendLoginRequest = () => {
+export const sendLoginRequest = (navigate) => {
   return (dispatch) => {
     dispatch(startLoading());
     setTimeout(() => {
       localStorage.setItem("isAuthenticated", "yes");
       dispatch(loginSuccessfully());
+      navigate("/exam");
     }, 500);
   };
 };
 
-export const logout = () => {
+export const logout = (navigate) => {
   localStorage.removeItem("isAuthenticated");
+  navigate("/login");
   return {
     type: actionTypes.LOGOUT,
   };

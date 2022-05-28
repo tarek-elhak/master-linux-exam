@@ -18,7 +18,7 @@ const Exam = (props) => {
   }, []);
 
   const logoutHandler = () => {
-    props.logout();
+    props.logout(navigate);
   };
 
   const nextQuestionHandler = (event) => {
@@ -85,7 +85,7 @@ const mapDispatchToProps = (dispatch) => {
     saveAnswer: (id, answer) =>
       dispatch(actionCreators.saveStudentAnswer(id, answer)),
     calcScore: () => dispatch(actionCreators.calculateStudentScore()),
-    logout: () => dispatch(actionCreators.logout()),
+    logout: (navigate) => dispatch(actionCreators.logout(navigate)),
   };
 };
 

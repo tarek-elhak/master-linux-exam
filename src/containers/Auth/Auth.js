@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import * as actionCreators from "../../store/actions/index";
 import Button from "../../components/ui/Button/Button";
 import Spinner from "../../components/ui/Spinner/Spinner";
 import classes from "./Auth.module.css";
 
 const Auth = (props) => {
+  const navigate = useNavigate();
   const [name, setName] = useState({
     value: "",
     rules: { required: true, min: 3 },
@@ -179,7 +181,7 @@ const Auth = (props) => {
 
   const authSubmitHandler = (event) => {
     event.preventDefault();
-    props.loginUser();
+    props.loginUser(navigate);
   };
 
   return (
@@ -240,7 +242,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loginUser: () => dispatch(actionCreators.sendLoginRequest()),
+    loginUser: (navigate) =>
+      dispatch(actionCreators.sendLoginRequest(navigate)),
   };
 };
 
