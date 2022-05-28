@@ -19,3 +19,9 @@ export const calculateStudentScore = () => {
     type: actionTypes.CALCULATE_STUDENT_SCORE,
   };
 };
+
+export const resetExam = () => {
+  return {
+    type: actionTypes.RESET_EXAM,
+  };
+};

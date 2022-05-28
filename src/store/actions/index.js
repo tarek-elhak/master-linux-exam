@@ -3,4 +3,5 @@ export {
   getQuestion,
   saveStudentAnswer,
   calculateStudentScore,
+  resetExam,
 } from "./questions";

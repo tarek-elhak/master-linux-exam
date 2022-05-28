@@ -12,6 +12,12 @@ const initialState = {
 
 export const questionsReducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.RESET_EXAM:
+      return {
+        ...state,
+        prevQuestions: [],
+        studentScore: 0,
+      };
     case actionTypes.GET_QUESTION:
       const remainingQuestions = state.questions.filter(
         (question) => !state.prevQuestions.includes(question.id)

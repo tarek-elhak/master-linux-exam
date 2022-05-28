@@ -14,6 +14,7 @@ const Exam = (props) => {
   };
 
   useEffect(() => {
+    props.resetExam();
     props.getQuestion();
   }, []);
 
@@ -81,6 +82,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    resetExam: () => dispatch(actionCreators.resetExam()),
     getQuestion: () => dispatch(actionCreators.getQuestion()),
     saveAnswer: (id, answer) =>
       dispatch(actionCreators.saveStudentAnswer(id, answer)),
