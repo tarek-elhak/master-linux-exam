@@ -23,11 +23,15 @@ const App = (props) => {
       <Routes>
         {props.isAuthenticated ? (
           <>
+            <Route path="/" element={<Exam />} />
             <Route path="/exam" element={<Exam />} />
             <Route path="/exam-result" element={<ExamResult />} />
           </>
         ) : (
-          <Route path="/login" element={<Auth />} />
+          <>
+            <Route path="/" element={<Auth />} />
+            <Route path="/login" element={<Auth />} />
+          </>
         )}
         <Route path="*" element={<NotFound />} />
       </Routes>
